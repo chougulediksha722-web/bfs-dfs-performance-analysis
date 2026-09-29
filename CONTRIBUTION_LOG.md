@@ -1,160 +1,210 @@
-\# CONTRIBUTION\_LOG.md
+SLE-2 – Contribution Log
 
+Project Information
 
+Project Name: SLE-2 – BFS & DFS Performance Analysis
+Developer: Diksha Chougule
+GitHub Username: chougulediksha722-web
+GitHub Repository: bfs-dfs-performance-analysis
+AI Coding Tool: GitHub Copilot
+Programming Language: Python
 
-\## SLE-2: BFS vs DFS Profiling
 
 
+Project Description
 
-This document records the use of AI assistance during the development of the SLE-2 project.
+This project analyzes and compares the performance of two fundamental graph traversal algorithms:
 
+* Breadth-First Search (BFS)
+* Depth-First Search (DFS)
 
+The project measures execution time and the number of nodes expanded by each algorithm. Profiling tools are also used to analyze the execution of the algorithms and generate visual profiling outputs.
 
-\## Student Information
 
 
+Contribution / Development Log
 
-\- \*\*Name:\*\* Diksha Sukumar Chougule
+1. Project Setup
 
-\- \*\*PRN:\*\* 26UAM310
+Created the SLE-2 project repository and established the basic project structure for BFS and DFS performance analysis.
 
-\- \*\*Division:\*\* A
+The project contains Python source files, profiling outputs, result files, and documentation.
 
-\- \*\*Course:\*\* 02AML204
 
 
+2. Graph Data Creation
 
-\## AI Tool Used
+Created graph_data.py to store the graph used for testing the BFS and DFS algorithms.
 
+The graph provides a common input so that both algorithms can be executed and compared under the same conditions.
 
 
-\*\*GitHub Copilot\*\* was used as an AI coding assistant during the development of this project.
 
+3. BFS and DFS Implementation
 
+Implemented BFS and DFS traversal functions in sle2_profiling.py.
 
-\## AI Contributions
+The algorithms were executed using the same graph and the same start and goal nodes so their performance could be compared.
 
 
 
-\### 1. Algorithm Understanding and Implementation
+4. Performance Measurement
 
+Added execution-time measurement and node-expansion counting for both algorithms.
 
+Example execution output:
 
-GitHub Copilot assisted with understanding and implementing:
+BFS
+Total time: 9.205100 ms
+Nodes expanded: 7
+DFS
+Total time: 4.285200 ms
+Nodes expanded: 3
 
+The measured values can vary slightly between executions because execution time depends on the system and runtime conditions.
 
 
-\- Breadth-First Search (BFS)
 
-\- Depth-First Search (DFS)
+5. cProfile Profiling
 
-\- Queue-based BFS traversal
+Used Python’s built-in cProfile module to profile the BFS and DFS executions.
 
-\- Stack-based DFS traversal
+Separate profiling scripts were created to run the algorithms repeatedly and generate profiling data:
 
-\- Visited-node tracking
+* profile_bfs.py
+* profile_dfs.py
 
+Profiling data was saved as:
 
+* profiling/bfs_clean.prof
+* profiling/dfs_clean.prof
 
-The suggested code was reviewed and tested by the student.
+Flamegraph-style SVG outputs were generated from the profiling data.
 
 
 
-\### 2. Performance Measurement
+6. py-spy Profiling
 
+After cProfile profiling, py-spy was used to perform sampling-based runtime profiling.
 
+Separate target programs were created for BFS and DFS:
 
-GitHub Copilot assisted with understanding Python's `timeit` module and structuring repeated performance measurements.
+* pyspy_bfs_target.py
+* pyspy_dfs_target.py
 
+The programs repeatedly execute the corresponding algorithm so that py-spy can collect enough samples.
 
+The profiling results were generated as SVG flamegraphs:
 
-The final program uses repeated executions to obtain more stable timing measurements because a single execution on the small graph is very fast.
+* profiling/pyspy_bfs.svg
+* profiling/pyspy_dfs.svg
 
+The Python 3.14 executable was used with py-spy to avoid the Python-version detection issue encountered earlier.
 
 
-\### 3. Profiling
 
+7. Profiling Visualization
 
+The generated SVG flamegraphs provide a visual representation of where execution time is spent during BFS and DFS execution.
 
-AI assistance was used to understand:
+The profiling outputs are stored inside the profiling/ directory.
 
 
 
-\- Python profiling concepts
+8. Results Documentation
 
-\- Profiling commands
+The measured BFS and DFS performance results were recorded in:
 
-\- `cProfile`
+results/results.txt
 
-\- Flameprof visualisation
+The results include:
 
-\- Profiling workflow and troubleshooting
+ Total execution time
+ Number of nodes expanded
 
 
 
-The profiling results were generated and verified by the student.
+9. Project Documentation
 
+Updated README.md with:
 
+* Project overview
+* BFS and DFS description
+* Project structure
+* Execution instructions
+* Performance results
+* cProfile profiling information
+* py-spy profiling information
+* Generated SVG profiling outputs
 
-\### 4. Debugging and Troubleshooting
+⸻
 
+10. Git and GitHub
 
+The project files were added and committed to Git.
 
-GitHub Copilot assisted with troubleshooting:
+The documentation and project updates were pushed to the GitHub repository.
 
+The repository is:
 
+bfs-dfs-performance-analysis
 
-\- Python execution commands
+The final working tree was verified using:
 
-\- Profiling commands
+git status
 
-\- Git commands
+and confirmed clean after committing and pushing the changes.
 
-\- GitHub repository setup
 
-\- Project organisation
 
+Final Project Structure
 
+sle 2/
+│
+├── profiling/
+│   ├── bfs.prof
+│   ├── bfs_profile.svg
+│   ├── dfs.prof
+│   ├── dfs_profile.svg
+│   ├── bfs_clean.prof
+│   ├── dfs_clean.prof
+│   ├── bfs_clean.svg
+│   ├── pyspy_bfs.svg
+│   └── pyspy_dfs.svg
+│
+├── report 1/
+│   └── sle2(AI)26UAM310.docx
+│
+├── results/
+│   └── results.txt
+│
+├── .gitignore
+├── CONTRIBUTION_LOG.md
+├── README.md
+├── graph_data.py
+├── pyspy_target.py
+├── pyspy_bfs_target.py
+├── pyspy_dfs_target.py
+├── profile_bfs.py
+├── profile_dfs.py
+└── sle2_profiling.py
 
-\### 5. Documentation
+⸻
 
+Tools Used
 
+* Python – Algorithm implementation and execution
+* Git & GitHub – Version control and project hosting
+* GitHub Copilot – AI coding assistance
+* cProfile – Python performance profiling
+* flameprof – Generation of flamegraph-style visualization from cProfile data
+* py-spy – Sampling-based Python profiling
+* SVG – Profiling visualization format
 
-GitHub Copilot assisted with preparing:
+⸻
 
+Conclusion
 
+The SLE-2 project successfully implements BFS and DFS and compares their execution performance using execution-time and node-expansion measurements.
 
-\- `README.md`
-
-\- `CONTRIBUTION\_LOG.md`
-
-\- Performance results explanation
-
-\- Project documentation
-
-\- SLE-2 report content
-
-
-
-The final documentation was reviewed by the student.
-
-
-
-\## Student Verification
-
-
-
-All AI-assisted suggestions were reviewed, tested, and modified where necessary by the student.
-
-
-
-The student is responsible for the final code, performance measurements, profiling evidence, documentation, and submitted project.
-
-
-
-\## Conclusion
-
-
-
-GitHub Copilot was used as an AI-assisted development and learning tool. It supported coding, debugging, profiling-related understanding, and documentation while the student performed the final testing and verification.
-
+The project was further enhanced using both cProfile and py-spy to provide profiling data and visual flamegraph outputs. The results and profiling files are organized in the repository along with the project documentation.
