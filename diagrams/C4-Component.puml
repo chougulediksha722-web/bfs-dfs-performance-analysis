@@ -1,0 +1,26 @@
+@startuml C4-Component
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title BFS and DFS Graph Search - Component Level
+
+Container_Boundary(bfsModule, "BFS Search Module") {
+
+    Component(queue, "Queue / Frontier", "Python", "Maintains nodes waiting to be explored")
+
+    Component(visited, "Visited Manager", "Python", "Tracks already visited nodes")
+
+    Component(neighbor, "Neighbor Expansion", "Python", "Processes neighboring graph nodes")
+
+    Component(goal, "Goal Test", "Python", "Checks whether the target node is reached")
+}
+
+Rel(queue, visited, "Checks visited nodes")
+Rel(queue, neighbor, "Provides node for expansion")
+Rel(neighbor, visited, "Marks discovered nodes")
+Rel(neighbor, goal, "Checks target")
+Rel(goal, queue, "Continues search")
+
+@enduml

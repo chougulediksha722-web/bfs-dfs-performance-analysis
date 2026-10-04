@@ -1,0 +1,40 @@
+@startuml C4-Code
+
+title BFS and DFS Graph Search - Code Level
+
+skinparam classAttributeIconSize 0
+
+class "graph_data.py" as GraphData {
+    graph
+}
+
+class "bfs.py" as BFS {
+    bfs(graph, start, target)
+    queue
+    visited
+}
+
+class "dfs.py" as DFS {
+    dfs(graph, start, target)
+    stack
+    visited
+}
+
+class "sle2_profiling.py" as Profiling {
+    measure_performance()
+}
+
+class "pyspy_target.py" as PySpy {
+    profiling_target
+}
+
+GraphData --> BFS : provides graph
+GraphData --> DFS : provides graph
+
+Profiling --> BFS : measures BFS
+Profiling --> DFS : measures DFS
+
+PySpy --> BFS : profiling target
+PySpy --> DFS : profiling target
+
+@enduml

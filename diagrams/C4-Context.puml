@@ -1,0 +1,16 @@
+@startuml C4-Context
+
+title BFS and DFS Graph Search - System Context
+
+actor User
+
+rectangle "BFS and DFS Graph Search System" as System
+
+rectangle "Graph Data" as Graph
+
+User --> System : Provides graph and search input
+System --> Graph : Reads graph data
+Graph --> System : Provides graph
+System --> User : Returns search and performance results
+
+@enduml

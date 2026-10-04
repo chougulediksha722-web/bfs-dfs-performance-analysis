@@ -1,5 +1,6 @@
 from collections import deque
-import timeit
+import time
+
 
 graph = {
     "A": ["B", "C"],
@@ -32,6 +33,8 @@ def bfs(graph, start, goal):
         for neighbour in graph[node]:
             queue.append(neighbour)
 
+    return nodes
+
 
 def dfs(graph, start, goal):
     stack = [start]
@@ -53,22 +56,25 @@ def dfs(graph, start, goal):
         for neighbour in graph[node]:
             stack.append(neighbour)
 
+    return nodes
+
 
 def measure(algorithm, name):
-    times = timeit.repeat(
-        lambda: algorithm(graph, "A", "G"),
-        repeat=3,
-        number=10000
-    )
+    runs = 10000
 
-    average_time = sum(times) / len(times)
-    average_per_run = (average_time / 10000) * 1000
+    start_time = time.perf_counter()
+
+    for _ in range(runs):
+        algorithm(graph, "A", "G")
+
+    end_time = time.perf_counter()
+
+    total_time = (end_time - start_time) * 1000
     nodes = algorithm(graph, "A", "G")
 
     print(name)
-    print("Nodes Expanded:", nodes)
-    print("Average Time for 10000 runs:", average_time, "seconds")
-    print("Average Time per run:", average_per_run, "ms")
+    print(f"Total time: {total_time:.6f} ms")
+    print(f"Nodes expanded: {nodes}")
     print()
 
 

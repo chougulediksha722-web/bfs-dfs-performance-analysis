@@ -1,0 +1,38 @@
+@startuml C4-Container
+
+title BFS and DFS Graph Search - Container Level
+
+actor User
+
+rectangle "BFS and DFS Graph Search System" as System {
+
+    rectangle "Graph Input Module" as Input
+
+    rectangle "BFS Search Module" as BFS
+
+    rectangle "DFS Search Module" as DFS
+
+    rectangle "Performance Measurement Module" as Performance
+
+    rectangle "Profiling Module" as Profiling
+
+    rectangle "Output Module" as Output
+}
+
+User --> Input : Provides graph and search input
+
+Input --> BFS : Provides graph
+Input --> DFS : Provides graph
+
+BFS --> Performance : Provides BFS execution data
+DFS --> Performance : Provides DFS execution data
+
+Performance --> Profiling : Sends performance data
+
+BFS --> Output : Returns BFS result
+DFS --> Output : Returns DFS result
+Performance --> Output : Returns comparison
+
+Output --> User : Displays results
+
+@enduml
